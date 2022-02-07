@@ -1,0 +1,67 @@
+
+
+<div class="container">
+
+  <div class="row"> 
+
+    <div class="mb-5">
+      <b>{{ result }}</b>
+    </div>
+
+    <label for="amount" class="form-label">Miktar</label>
+    <input
+        type="number"
+        class="form-control"
+        id="amount"   [(ngModel)]="sum"/>
+    <br />
+
+    <label for="state" class="form-label">Döviz Tipi</label>
+    <select
+        class="form-select"
+        id="currency"
+        required=""
+        [(ngModel)]="convertCurrency">
+        <ng-container *ngFor="let currency of currencies">
+          <option
+            *ngIf="currency.code"
+            [value]="currency.code">
+            {{ currency.code }} - {{ currency.name }}
+          </option>
+        </ng-container>
+    </select>
+    <br />
+
+    <label for="state" class="form-label">Dönüştürülecek Para Birimi</label>
+    <select
+        class="form-select"
+        id="state"
+        required=""
+        [(ngModel)]="targetCurrency">
+        <ng-container *ngFor="let currency of currencies">
+          <option
+            *ngIf="currency.code"
+            [selected]="currency.code == 'TL'"
+            [value]="currency.code">
+            {{ currency.code }} - {{ currency.name }}
+          </option>
+        </ng-container>
+    </select>
+    <br />
+
+    <button type="button" class="btn btn-primary" (click)="convertCurrency()">
+      Dönüştür
+    </button>
+
+    <div class="col">
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
